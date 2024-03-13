@@ -2,27 +2,29 @@
 
 // doi cho xau ki tu
 
+void swapk(){
+	std::string s;
+	int k;
+	std::cin >> k >> s;
+	if(k >= s.size()) k = s.size();
+	for(int i = 0; i < k; i++){
+		int tmp = i, j = s.size();
+		while(j-- > i){
+			if(s[j] > s[tmp]) tmp = j;
+		}
+		if(tmp != i) std::swap(s[i], s[tmp]);
+	} 
+	std::cout << s << std::endl;
+}
+
 int main(){
+	std::ios_base::sync_with_stdio(false);
+	std::cin.tie(0);
+	std::cout.tie(0);
 	int test;
 	std::cin >> test;
 	while(test--){
-		std::string s;
-		int k;
-		std::cin >> k >> s;
-			for(int i = 0; i < s.length() - 1 && k > 0; i++){
-				int idex = i, check = 0;
-				for(int j = i + 1; j < s.length(); j++){
-					if(s[j] >= s[idex]){
-						check = 1;
-						idex = j;
-					}
-				}
-				if(check == 1){
-					std::swap(s[idex], s[i]);
-					k--;
-				}
-			}
-		std::cout << s << std::endl;
+		swapk();
 	}
 	return 0;
 }
